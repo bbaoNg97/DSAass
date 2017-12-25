@@ -176,7 +176,7 @@ public class ModuleB {
 
         for (int i = 1; i <= deliManList.getTotal(); ++i) {                 //find the delivery Man by regNo
             if (deliManList.getEntry(i).getRegNo().equals(regNo)) {
-                ans = true;
+                ans = true;                                 //to check wether want to show error message or not
                 System.out.println(deliManList.getEntry(i).toString());
                 //working status either is resigned or retired can not update delivery man's information
                 if (deliManList.getEntry(i).getWorkingStatus().equals("Employed")) {
@@ -248,6 +248,7 @@ public class ModuleB {
 
     public static void updateStatus(LinkedListInterface<DeliveryMan> deliManList) {
         System.out.println("\n\n");
+        boolean ans = true;
         title();
         System.out.println("\tUpdate Delivery Man Status");
         System.out.println("---------------------------------------------------------------------");
@@ -282,7 +283,12 @@ public class ModuleB {
                     }
                 }
 
-            }
+            } 
+            else 
+                ans=false;          
+        }
+        if(ans==false){
+             System.out.println("Sorry, the ID does not exist in the list. Please try again.");
         }
     }
 
@@ -321,6 +327,8 @@ public class ModuleB {
                             //don't ask the user want to view pending deliveries or not
 
                         }
+                    } else {
+                        selection = 2;
                     }
                 }
                 if (a == 1) {
