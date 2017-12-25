@@ -180,8 +180,9 @@ public class ModuleB {
                 System.out.println(deliManList.getEntry(i).toString());
                 //working status either is resigned or retired can not update delivery man's information
                 if (deliManList.getEntry(i).getWorkingStatus().equals("Employed")) {
-                    boolean valid = true;                                           //to check whether the number of menu is valid
+                    boolean valid;
                     do {
+                        valid = true;           //to check whether the number of menu is valid
                         System.out.println("\n\nWhich informaton you want to update?\n");
                         System.out.println("1. Name");
                         System.out.println("2. IC");
@@ -234,8 +235,10 @@ public class ModuleB {
                     System.out.println("---------------------------------------------------------------------\n");
                     System.out.println(deliManList.getEntry(i).toString());
                 }
-                //display error message
-                System.out.println("The working status of " + deliManList.getEntry(i).getRegNo() + " is " + deliManList.getEntry(i).getWorkingStatus() + ". The contact information can not be change.");
+                else //display error message
+                {
+                    System.out.println("The working status of " + deliManList.getEntry(i).getRegNo() + " is " + deliManList.getEntry(i).getWorkingStatus() + ". The contact information can not be change.");
+                }
 
             }
 
@@ -266,6 +269,7 @@ public class ModuleB {
                     System.out.println("1. Employed\t2. Exit");
                     System.out.print("Please select 1 or 2: ");
                     input = scan.nextInt();
+                    ans = true;
                     if (input == 1) {
                         deliManList.getEntry(i).setWorkingStatus("Employed");
                         System.out.println("The status is updated.");
@@ -274,6 +278,7 @@ public class ModuleB {
                     System.out.println("1. Retired\t2. Resigned\t3. Exit");
                     System.out.print("Please select 1 or 2 or 3: ");
                     input = scan.nextInt();
+                    ans = true;
                     if (input == 1) {
                         deliManList.getEntry(i).setWorkingStatus("Retired");
                         System.out.println("The status is updated.");
@@ -283,12 +288,12 @@ public class ModuleB {
                     }
                 }
 
-            } 
-            else 
-                ans=false;          
+            } else {
+                ans = false;
+            }
         }
-        if(ans==false){
-             System.out.println("Sorry, the ID does not exist in the list. Please try again.");
+        if (ans == false) {
+            System.out.println("Sorry, the ID does not exist in the list. Please try again.");
         }
     }
 
